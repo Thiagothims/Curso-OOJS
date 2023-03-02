@@ -53,3 +53,9 @@ div.ingredient p {
     margin: 20px;
     text-shadow: 2px 3px 5px rgb(3, 49, 3);
 }
+
+footer {
+    text-align: center;
+    padding-bottom: 30px;
+    margin: auto;
+}
