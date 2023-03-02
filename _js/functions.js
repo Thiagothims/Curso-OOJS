@@ -1,12 +1,12 @@
 // refatorar/refactor para realizar alteraçãoes em vetores contendo objects
-function newCaptalize(colection, attribute) {
+function newCaptalize(colection, attr) {
     
     if (typeof colection[0] == 'object') {
         var newColection = colection.map(function(obj) {
-            var letterInitial = obj[attribute].charAt(0).toUpperCase();
-            var restString = obj[attribute].slice(1);
+            var letterInitial = obj[attr].charAt(0).toUpperCase();
+            var restString = obj[attr].slice(1);
 
-            obj[attribute] = letterInitial + restString;
+            obj[attr] = letterInitial + restString;
             
             return obj;
         });
@@ -26,6 +26,24 @@ function newCaptalize(colection, attribute) {
 }
 
 
+function newOrder(colection, attr=null) {
+    return attr ?
+    colection.sort(function(a,b){
+        return typeof a[attr] == 'number' ?
+            a[attr] - b[attr] :
+            a[attr].localeCompare(b[attr])        
+        }):
+    colection.sort(function(a, b){
+        return typeof a == 'number' ?
+        a - b :
+        a.localeCompare(b)
+    });
+}
+
+
+/*
+
+
 function captalize(array) {
     var modifiedCap = [];
     
@@ -42,19 +60,6 @@ function captalize(array) {
 };
 
 
-
-
-
-function newOrder() {
-
-
-}
-
-
-
-
-
-
 function order(array) {
     // order array
     //console.log(newArrayIngred.sort()) // ordenação pronta, não funciona se a palavra tiver acent(latino)
@@ -69,12 +74,13 @@ function upperString(array) {
         modified[i] = array[i].toUpperCase();
     }
     return modified;
-}
+}*/
 
 
 export default {
-    captalize: captalize,
+    /*captalize: captalize,
     order: order,
-    upperString: upperString,
-    newCaptalize: newCaptalize
+    /*upperString: upperString,*/
+    newCaptalize: newCaptalize,
+    newOrder: newOrder
 };
